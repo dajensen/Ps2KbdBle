@@ -4,14 +4,14 @@
 #include "PrintHex8.h"
 
 
-#define DEBUG_ENABLE                   false  // If set to 'true' enables debug output
+#define DEBUG_ENABLE                   true  // If set to 'true' enables debug output
 
 
 #if DEBUG_ENABLE
 
     const int DEBUG_MAX_LEN = 128;
 
-    inline void dprintf(char *fmt, ...) {
+    inline void dprintf(const char *fmt, ...) {
         
         char buf[DEBUG_MAX_LEN]; // resulting string limited to 128 chars
         
@@ -22,13 +22,13 @@
         Serial.print(buf);
     }
 
-    inline void dprint(char *s) {
+    inline void dprint(const char *s) {
         Serial.print(s);
     }
 
     #define dmsg(s)             dprintf("%s at %s: %S\n", __FILE__, __LINE__, s)
 
-    inline void dprint8(char *msg, uint8_t c) {
+    inline void dprint8(const char *msg, uint8_t c) {
 
       char buf[128];
       char *ptr = buf;
@@ -48,12 +48,12 @@
 
 #else
 
-    inline void dprintf(char *fmt, ...) {}
-    inline void dprint(char *s) {}
+    inline void dprintf(const char *fmt, ...) {}
+    inline void dprint(const char *s) {}
 
     #define dmsg(s)
 
-    inline void dprint8(char *msg, uint8_t c) {}
+    inline void dprint8(const char *msg, uint8_t c) {}
 
 #endif
 

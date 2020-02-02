@@ -28,7 +28,7 @@ class IntHandler {
 	uint8_t incoming=0;
 	uint32_t prev_ms=0;
 
-	reset() {
+	void reset() {
 		bitcount = 0;
 		incoming = 0;
 		startbit = 0;
@@ -102,7 +102,7 @@ class IntHandler {
 	}
 
 	void int_handler(void) {
-  uint8_t val = read_bit();
+    uint8_t val = read_bit();
     dprintf("%d ", val);
 
 		uint32_t now_ms;
@@ -191,5 +191,3 @@ void PS2Keyboard::begin() {
 
 	the_handler.set_data_pin(data_pin);
 }
-
-
